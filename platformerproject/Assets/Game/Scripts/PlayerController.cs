@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.Assertions.Must;
-
 public class PlayerController : MonoBehaviour
 {
 
     private Rigidbody2D rb;
-    [SerializeField] private Animator animator;
+    private Animator animator;
     private float horizontalMovement;
     private Vector2 moveDirection;
     private bool isFacingRight;
@@ -14,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [Header("Jumping Variables")]
     [SerializeField] private float jumpForce;
-    private int maxJumps = 1;
+    private int maxJumps = 2;
     private int jumpsRemaining;
 
     [Header("Ground Check")]
@@ -31,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
-        Debug.Log(jumpsRemaining);
+
     }
 
     private void Update()
@@ -45,14 +44,22 @@ public class PlayerController : MonoBehaviour
             jumpsRemaining = maxJumps;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && jumpsRemaining > 0 )
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnJumpUp();
+        }
+        animator.SetFloat("IsFalling",rb.velocity.y);
+
+    }
+
+    private void OnJumpUp()
+    {
+        if (jumpsRemaining > 0)
         {
             Jump();
         }
-        animator.SetFloat("IsFalling",rb.velocity.y);
-        //Debug.Log(horizontalMovement + " Horizontal movement");
-    }
 
+    }
     private void Flip()
     {
         if (isFacingRight && moveDirection.x > 0 || !isFacingRight && moveDirection.x < 0)
