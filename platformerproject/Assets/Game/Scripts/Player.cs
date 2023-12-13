@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    //kenney.nl
+
     [SerializeField] private float moveSpeed = 7.5f;
 
     void Update()
