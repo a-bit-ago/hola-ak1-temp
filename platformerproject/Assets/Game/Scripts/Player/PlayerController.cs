@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
     private float horizontalMovement;
+
     private Vector2 moveDirection;
     private bool isFacingRight;
 
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce;
     private int maxJumps = 2;
     private int jumpsRemaining;
+
 
     [Header("Ground Check")]
     [SerializeField] private Transform groundCheckPoint;
