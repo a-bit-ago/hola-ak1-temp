@@ -33,6 +33,7 @@ public class Coin : MonoBehaviour, ICollectible
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.gameObject.CompareTag("Player"))
         {
             Collect();

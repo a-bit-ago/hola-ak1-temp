@@ -27,7 +27,7 @@ public class LogicManager : MonoBehaviour
     public void PlayAgain()
     {
         //Laddar första scenen i Build Settings igen när jag trycker på knappen
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Lecture");
     }
 
 
